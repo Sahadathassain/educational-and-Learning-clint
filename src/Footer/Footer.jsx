@@ -1,63 +1,70 @@
 
+import {
+  
+  FaInstagramSquare,
+  FaTwitterSquare,
+  FaLinkedin,
+  FaFacebook,
+} from "react-icons/fa";
 
 const Footer = () => {
-    return (
-        <div>
-            <footer className="footer p-10 bg-base-200 text-base-content">
-            <div>
-                <img src='' alt="" />
-                <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
+  return (
+    <div>
+      <footer className="footer p-10 bg-base-200 text-base-content">
+        <div className="">
+          <img className="w-10 rounded-lg" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6_P5oCkEo80h-NCtlhFoMkGMJYxS_g9vcXw&usqp=CAU' alt="" />
+          <p>Educational and Learning <br /> Providing reliable tech since 2022</p>
+          <div className=" flex mt-3">
+              <a href="https://www.linkedin.com/">
+                <FaLinkedin className="mr-2 h-8 w-8" />
+              </a>
+              <a href="https://www.feacbook.com/">
+                <FaFacebook className="mr-2 h-8 w-8" />
+              </a>
+              <a href="https://twitter.com/">
+                <FaTwitterSquare className="mr-2 h-8 w-8" />
+              </a>
+              <a href="https://www.instagram.com/">
+                <FaInstagramSquare className="mr-2 h-8 w-8" />
+              </a>
             </div>
-            <div>
-                <span className="footer-title">Services</span>
-                <a className="link link-hover">Branding</a>
-                <a className="link link-hover">Design</a>
-                <a className="link link-hover">Marketing</a>
-                <a className="link link-hover">Advertisement</a>
-            </div>
-            <div>
-                <span className="footer-title">Company</span>
-                <a className="link link-hover">About us</a>
-                <a className="link link-hover">Contact</a>
-                <a className="link link-hover">Jobs</a>
-                <a className="link link-hover">Press kit</a>
-            </div>
-            <div>
-                <span className="footer-title">Legal</span>
-                <a className="link link-hover">Terms of use</a>
-                <a className="link link-hover">Privacy policy</a>
-                <a className="link link-hover">Cookie policy</a>
-            </div>
-            <div>
-            {/* <div className="flex justify-center space-x-4">
-          <a
-            href="https://example.com/facebook"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="BsFacebook"></i>
-          </a>
-          <a
-            href="https://example.com/twitter"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fab fa-twitter fa-lg"></i>
-          </a>
-          <a
-            href="https://example.com/instagram"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fab fa-instagram fa-lg"></i>
-          </a>
-        </div> */}
-        
-
-            </div>
-        </footer>
         </div>
-    );
+        <div>
+          <span className="footer-title">Services</span>
+          <a className="link link-hover">University Information</a>
+          <a className="link link-hover">Best University</a>
+          <a className="link link-hover">Medium University</a>
+          <a className="link link-hover">Local collage</a>
+         
+        </div>
+        <div>
+        
+        </div>
+        <div>
+          <span className="footer-title">Company</span>
+          <a className="link link-hover">About us</a>
+          <a className="link link-hover">Contact</a>
+          <a className="link link-hover">Jobs</a>
+          <a className="link link-hover">Press kit</a>
+        </div>
+        <div>
+          <span className="footer-title">Legal</span>
+          <a className="link link-hover">Terms of use</a>
+          <a className="link link-hover">Privacy policy</a>
+          <a className="link link-hover">Cookie policy</a>
+        </div>
+        <div>
+
+
+        </div>
+      </footer>
+      <div className="">
+        <div className=" text-center">
+          <p>&copy; 2023 Your Company. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Footer;

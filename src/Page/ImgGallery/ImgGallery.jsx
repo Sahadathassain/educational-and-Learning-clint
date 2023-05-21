@@ -14,7 +14,7 @@ const ImgGallery = () => {
 
                 </div>
                 <div className="  bg-base-100 ">
-                   <img className="shadow-2xl w-full h-full rounded-xl" src="https://www.telegraph.co.uk/content/dam/education/2017/05/15/TELEMMGLPICT000001065158_trans_NvBQzQNjv4BqpVlberWd9EgFPZtcLiMQfyf2A9a6I9YchsjMeADBa08.jpeg" alt="" />
+                   <img className="shadow-2xl w-full h-full rounded-xl" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYPzgBIWDI5JjxzWXZpl_Ly5htWbbr5o6iKf5UeeWZwB38TLkiqAYn7qWgaw5scisnN5M&usqp=CAU" alt="" />
 
                 </div>
                 <div className="  bg-base-100 ">
@@ -26,7 +26,7 @@ const ImgGallery = () => {
 
                 </div>
                 <div className="  bg-base-100 ">
-                   <img className="shadow-2xl w-full rounded-xl " src="https://www.all-about-photo.com/images/articles/ART-592-1.jpg" alt="" />
+                   <img className="shadow-2xl w-full rounded-xl " src="https://feeds.abplive.com/onecms/images/uploaded-images/2022/06/09/270effa60d5389b6eeda03a49e1d1dc1_original.jpg" alt="" />
 
                 </div>
                 <div className="  bg-base-100 ">

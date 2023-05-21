@@ -61,12 +61,20 @@ const Header = () => {
             Blog
           </NavLink>
           <NavLink
-            to="/blogs"
+            to="/addToys"
             exact="true"
             className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-700 sm:mt-0 sm:ml-2"
           >
-            all toys
+            Add toys
           </NavLink>
+          <NavLink
+            to="/addToys"
+            exact="true"
+            className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-700 sm:mt-0 sm:ml-2"
+          >
+            All toys
+          </NavLink>
+          
           {user && user.photoURL ? (
             <img
               src={user.photoURL}

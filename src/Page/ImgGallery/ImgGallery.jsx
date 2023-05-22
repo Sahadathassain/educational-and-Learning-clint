@@ -6,9 +6,9 @@ const ImgGallery = () => {
 
         <div>
             <div className="text-center p-6">
-                <h1 className='font-bold text-6xl'>World Best University</h1>
+                <h1 className='font-bold text-4xl'>World Best University ImgGallery</h1>
             </div>
-            <div className="grid grid-cols-3  p-5 gap-5">
+            <div className="grid grid-cols-3  p-5 gap-5  bg-slate-300">
                 <div className="  bg-base-100 ">
                    <img className="shadow-2xl  w-full h-full rounded-xl " src="https://images.travelandleisureasia.com/wp-content/uploads/sites/2/2022/07/Untitled-design-2022-07-28T084951.750.png" alt="" />
 

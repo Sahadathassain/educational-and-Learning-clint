@@ -65,10 +65,17 @@ const Header = () => {
             exact="true"
             className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-700 sm:mt-0 sm:ml-2"
           >
-            Add toys
+            Add Toys
           </NavLink>
           <NavLink
             to="/addToys"
+            exact="true"
+            className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-700 sm:mt-0 sm:ml-2"
+          >
+            My Toys
+          </NavLink>
+          <NavLink
+            to="/alltoys"
             exact="true"
             className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-700 sm:mt-0 sm:ml-2"
           >

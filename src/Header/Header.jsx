@@ -68,7 +68,7 @@ const Header = () => {
             Add Toys
           </NavLink>
           <NavLink
-            to="/addToys"
+            to="/mytoys"
             exact="true"
             className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-700 sm:mt-0 sm:ml-2"
           >

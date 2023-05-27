@@ -61,13 +61,13 @@ const AddToys = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Name</span>
+                                <span className="label-text">Product Name</span>
                             </label>
                             <label className="input-group">
                                 <input
                                     type="text"
                                     name="toyName"
-                                    placeholder="Name"
+                                    placeholder="Product Name"
                                     className="input input-bordered w-full"
                                     value={formData.toyName}
                                     onChange={handleChange}

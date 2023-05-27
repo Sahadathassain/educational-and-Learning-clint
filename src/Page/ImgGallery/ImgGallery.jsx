@@ -6,31 +6,31 @@ const ImgGallery = () => {
 
         <div>
             <div className="text-center p-6">
-                <h1 className='font-bold text-4xl'>World Best University ImgGallery</h1>
+                <h1 className='font-bold text-4xl'>Educational and Learning ImgGallery</h1>
             </div>
             <div className="grid grid-cols-3  p-5 gap-5  bg-slate-300">
                 <div className="  bg-base-100 ">
-                   <img className="shadow-2xl  w-full h-full rounded-xl " src="https://images.travelandleisureasia.com/wp-content/uploads/sites/2/2022/07/Untitled-design-2022-07-28T084951.750.png" alt="" />
+                   <img className="shadow-2xl  w-full h-full rounded-xl " src="https://static-01.daraz.com.bd/p/eb9f0a994b3fdcf4aa798979cef9df29.jpg" alt="" />
 
                 </div>
                 <div className="  bg-base-100 ">
-                   <img className="shadow-2xl w-full h-full rounded-xl" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYPzgBIWDI5JjxzWXZpl_Ly5htWbbr5o6iKf5UeeWZwB38TLkiqAYn7qWgaw5scisnN5M&usqp=CAU" alt="" />
+                   <img className="shadow-2xl w-full h-full rounded-xl" src="https://static-01.daraz.com.bd/p/60cea3dd7922298350aef90b90be5505.jpg_720x720.jpg_.webps" alt="" />
 
                 </div>
                 <div className="  bg-base-100 ">
-                   <img className="shadow-2xl  w-full h-full rounded-xl" src="https://images.academicinfluence.com/res/w_800,h_450,c_pad,f_auto,q_auto/v1679591986294/schools/st-johns-college-cambridge" alt="" />
+                   <img className="shadow-2xl  w-full h-full rounded-xl" src="https://m.media-amazon.com/images/I/71uTsfIBmOL._AC_UF894,1000_QL80_.jpg" alt="" />
 
                 </div>
                 <div className="  bg-base-100 ">
-                   <img className="shadow-2xl w-full h-full rounded-xl " src="https://i.guim.co.uk/img/media/f04165858da0c2b9413dc46825f19507821b0d15/0_408_5976_3584/master/5976.jpg?width=1200&quality=85&auto=format&fit=max&s=9af7d2a27fff320af3b203a1cd612cf8" alt="" />
+                   <img className="shadow-2xl w-full h-full rounded-xl " src="https://i.ebayimg.com/images/g/uswAAOSwp-lkIeI4/s-l1600.jpg" alt="" />
 
                 </div>
                 <div className="  bg-base-100 ">
-                   <img className="shadow-2xl w-full rounded-xl " src="https://feeds.abplive.com/onecms/images/uploaded-images/2022/06/09/270effa60d5389b6eeda03a49e1d1dc1_original.jpg" alt="" />
+                   <img className="shadow-2xl w-full h-full rounded-xl " src="https://annainthehouse.com/wp-content/uploads/2021/11/montessori-toddler-toys-3.jpg" alt="" />
 
                 </div>
                 <div className="  bg-base-100 ">
-                   <img className="shadow-2xl  w-full h-full rounded-xl " src="https://image.cnbcfm.com/api/v1/image/105265768-University_of_Cambridge.jpg?v=1532563625&w=929&h=523&vtcrop=y" alt="" />
+                   <img className="shadow-2xl  w-full h-full rounded-xl " src="https://i.ebayimg.com/images/g/G3QAAOSwe61ftbcK/s-l1600.jpg" alt="" />
 
                 </div>
  

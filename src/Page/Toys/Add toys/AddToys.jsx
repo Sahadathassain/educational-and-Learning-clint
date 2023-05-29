@@ -24,7 +24,7 @@ const AddToys = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Process the form data here
-        fetch(`http://localhost:5000/information`, {
+        fetch(`http://localhost:5000/Data`, {
             method: "POST",
             headers: { "content-Type": "application/json" },
             body: JSON.stringify(formData),

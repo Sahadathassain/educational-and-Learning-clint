@@ -80,7 +80,7 @@ const Category = () => {
                     >
                       <div className="aspect-w-3 h-96 relative">
                         <img
-                          data-aos="fade-right"
+                          data-aos="flip-right"
                           src={filteredToy.toyPhoto}
                           alt={filteredToy.toyName}
                           className="h-full w-full object-cover rounded-lg"
@@ -88,7 +88,7 @@ const Category = () => {
                       </div>
                       <div className="mt-4">
                         <h3
-                          data-aos="fade-down"
+                          data-aos="fade-left"
                           className="text-xl text-center font-bold mb-2"
                         >
                           Toy Name:{" "}
@@ -103,21 +103,21 @@ const Category = () => {
                             : filteredToy.detailDescription}
                         </h2>
                         <div className="flex mx-10 justify-between">
-                          <p className="text-lg font-bold">
+                          <p  data-aos="zoom-in-up" className="text-lg font-bold">
                             Price: ${filteredToy.price}
                           </p>
-                          <p className="text-lg font-bold">
+                          <p  data-aos="zoom-in-up" className="text-lg font-bold">
                             Available Quantity: {filteredToy.availableQuantity}
                           </p>
                           <div className="flex items-center text-lg font-bold mb-2">
-                            <p className="">Rating: {filteredToy.toyRating}</p>
+                            <p  data-aos="zoom-in-up" className="">Rating: {filteredToy.toyRating}</p>
                             <AiFillStar className="text-yellow-500 mr-1" />
                           </div>
                         </div>
                         <Link 
-                          data-aos="fade-down"
+                          data-aos="fade-"
                           to={`/viewdetails/${filteredToy._id}`}
-                          className="btn btn-block text-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
+                          className="btn btn-block text-xl bg-gradient-to-r from-blue-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 text-white font-semibold rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
                         >
                           <BsEyeFill className="mr-1" />
                           View Details
@@ -129,15 +129,15 @@ const Category = () => {
           )}
           {!showAll ? (
             <button
-              data-aos="fade-up"
-              className="btn btn-block text-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold rounded focus:outline-none focus:ring-2 focus:ring-pink-500 mt-4"
+              data-aos="flip-down"
+              className="btn btn-block text-xl bg-gradient-to-r from-blue-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 text-white font-semibold rounded focus:outline-none focus:ring-2 focus:ring-pink-500 mt-4"
               onClick={handleSeeAll}
             >
               See All
             </button>
           ) : (
             <button
-              className="btn btn-block text-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold rounded focus:outline-none focus:ring-2 focus:ring-pink-500 mt-4"
+              className="btn btn-block text-xl bg-gradient-to-r from-blue-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 text-white font-semibold rounded focus:outline-none focus:ring-2 focus:ring-pink-500 mt-4"
               onClick={handleShowLess}
             >
               Show Less

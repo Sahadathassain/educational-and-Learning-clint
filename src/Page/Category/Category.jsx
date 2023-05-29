@@ -62,7 +62,7 @@ const Category = () => {
           {loading ? (
             <div className="flex justify-center h-screen">
               <img
-                src="https://static.vecteezy.com/system/resources/thumbnails/023/549/926/small/doll-high-quality-logo-illustration-ideal-for-t-shirt-graphic-vector.jpg"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6_P5oCkEo80h-NCtlhFoMkGMJYxS_g9vcXw&usqp=CAU"
                 alt="Loading..."
                 className="w-16 h-16 rounded-full animate-spin"
               />
@@ -130,14 +130,14 @@ const Category = () => {
           {!showAll ? (
             <button
               data-aos="flip-down"
-              className="btn btn-block text-xl bg-gradient-to-r from-blue-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 text-white font-semibold rounded focus:outline-none focus:ring-2 focus:ring-pink-500 mt-4"
+              className="btn btn-block text-xl bg-gradient-to-r from-blue-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 text-white font-semibold rounded focus:outline-none focus:ring-2 focus:ring-orange-500 mt-4"
               onClick={handleSeeAll}
             >
               See All
             </button>
           ) : (
             <button
-              className="btn btn-block text-xl bg-gradient-to-r from-blue-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 text-white font-semibold rounded focus:outline-none focus:ring-2 focus:ring-pink-500 mt-4"
+              className="btn btn-block text-xl bg-gradient-to-r from-blue-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 text-white font-semibold rounded focus:outline-none focus:ring-2 focus:ring-orange-500 mt-4"
               onClick={handleShowLess}
             >
               Show Less

@@ -1,18 +1,23 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import React from "react";
-import { Navigate, useLocation } from "react-router";
-import { useContext } from "react";
-import { AuthContext } from "../provider/AuthProvider";
+import { useContext } from 'react';
+import { Navigate } from 'react-router';
+import { AuthContext } from '../Providers/AuthProvider';
+import PropTypes from 'prop-types';
 
-const PrivateRoute = ({ children }) => {
-  const { user } = useContext(AuthContext);
-  const location = useLocation();
-  if (user) {
-    return children;
+const PrivateRoute = (  {children} ) => {
+  const { user, loading } = useContext(AuthContext);
+
+  if (loading) {
+    return <progress className="progress w-56"></progress>;
   }
 
-  return <Navigate to="/login" replace></Navigate>;
+  if (user?.email) {
+    return children; // Render the children when the user is logged in
+  }
+
+  return <Navigate to="/login" replace />; // Redirect to the login page when the user is not logged in
 };
 
+PrivateRoute.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 export default PrivateRoute;

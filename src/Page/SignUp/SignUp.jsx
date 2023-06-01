@@ -135,7 +135,7 @@ const SignUp = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-pink-500">
+              className="w-full bg-gradient-to-r from-blue-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-orange-500">
               Register
             </button>
             <p className="mt-4 text-center text-lg text-gray-600">

@@ -1,11 +1,17 @@
-import { useEffect, useState } from 'react';
-import 'tailwindcss/tailwind.css'; // Import Tailwind CSS
+import  { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import UpdateToy from '../UpdateToy/UpdateToy';
+
 
 const MyToys = () => {
   const [myToysData, setMyToysData] = useState([]);
-
+  const [selectedToy, setSelectedToy] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+ 
   useEffect(() => {
-    const email = 'example@example.com'; // Replace with the desired email
+    const email = 'example@example.com'; 
 
     fetch(`http://localhost:5000/myToys/${email}`)
       .then((response) => response.json())
@@ -16,45 +22,48 @@ const MyToys = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  const handleUpdate = (toyId) => {
-    // Prompt the user for updated information
-    const updatedPrice = prompt('Enter the updated price:');
-    const updatedQuantity = prompt('Enter the updated available quantity:');
-    const updatedRating = prompt('Enter the updated rating:');
+  const handleUpdateClick = (toy) => {
+    setSelectedToy(toy);
+    setShowModal(true);
+  };
 
-    // Create the updated toy object
-    const updatedToy = {
-      price: parseFloat(updatedPrice),
-      availableQuantity: parseInt(updatedQuantity),
-      rating: parseInt(updatedRating),
-    };
-
-    // Send the updated toy object to the server
-    fetch(`http://localhost:5000/myToys/${toyId}`, {
-      method: 'PUT',
+  const handleToyUpdate = (updatedToyData) => {
+    const { _id: toyId } = selectedToy;
+    console.log(selectedToy);
+  
+    return fetch(`http://localhost:5000/updateToy/${toyId}`, {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(updatedToy),
+      body: JSON.stringify(updatedToyData),
     })
       .then((response) => {
         if (response.ok) {
           console.log(`Toy with ID ${toyId} updated successfully`);
-          // Update the toy in the state
           setMyToysData((prevData) =>
             prevData.map((toy) => {
               if (toy._id === toyId) {
-                return { ...toy, ...updatedToy };
+                return { ...toy, ...updatedToyData };
               }
               return toy;
             })
           );
+          toast.success('Toy updated successfully');
         } else {
           throw new Error('Failed to update toy');
         }
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error('Failed to update toy:', error);
+        throw error;
+      });
   };
+  
+ 
+  // Example usage
+ 
+  
 
   const handleDelete = (toyId) => {
     fetch(`http://localhost:5000/myToys/${toyId}`, {
@@ -63,8 +72,8 @@ const MyToys = () => {
       .then((response) => {
         if (response.ok) {
           console.log(`Toy with ID ${toyId} deleted successfully`);
-          // Remove the deleted item from the state
           setMyToysData((prevData) => prevData.filter((item) => item._id !== toyId));
+          toast.success('Toy deleted successfully');
         } else {
           throw new Error('Failed to delete toy');
         }
@@ -74,7 +83,8 @@ const MyToys = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-3xl mb-4 text-center font-bold mb">My Toys Information</h1>
+      <h1 className="text-3xl mb-4 text-center font-bold">My Toys Information</h1>
+     
       <div className="overflow-x-auto">
         <table className="w-full border-collapse border border-gray-200">
           <thead>
@@ -99,10 +109,9 @@ const MyToys = () => {
                 <td className="p-2 text-center">
                   <button
                     className="text-sm bg-black text-white rounded-md py-2 px-3 mb-2"
-                    onClick={() => handleUpdate(item._id)}
+                    onClick={() => handleUpdateClick(item)}
                   >
-                   Update
-                    
+                     Update
                   </button>
                 </td>
                 <td className="p-2 text-center">
@@ -118,6 +127,10 @@ const MyToys = () => {
           </tbody>
         </table>
       </div>
+      {showModal && (
+        <UpdateToy toy={selectedToy} onClose={() => setShowModal(false)} onUpdate={handleToyUpdate} />
+      )}
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };

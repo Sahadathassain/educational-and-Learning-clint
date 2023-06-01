@@ -87,7 +87,7 @@ const Login = () => {
           <div className="flex items-center justify-center">
             <button
               type="submit"
-              className="w-full text-xl bg-gradient-to-r from-sky-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-pink-500">
+              className="w-full text-xl bg-gradient-to-r from-sky-500 to-blue-500 hover:from-purple-600 hover:to-sky-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-pink-500">
               Sign In
             </button>
           </div>

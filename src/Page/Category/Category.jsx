@@ -44,9 +44,9 @@ const Category = () => {
   };
 
   return (
-    <Tabs>
+    <Tabs className="m-10">
       <h1 className="text-center font-extrabold text-4xl my-8">
-      Learning Toys Collection
+        Learning Toys Collection
       </h1>
       <TabList className="text-center font-bold text-4xl border-y-2">
         {subCategories.map((subCategory) => (
@@ -55,7 +55,7 @@ const Category = () => {
       </TabList>
 
       {subCategories.map((subCategory) => (
-        <TabPanel key={subCategory}>
+        <TabPanel className="lg:m-10 sm:m-1" key={subCategory}>
           <h2 className="text-3xl text-center mt-5 font-bold mb-4">
             Toys in {subCategory}
           </h2>
@@ -68,7 +68,7 @@ const Category = () => {
               />
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {toys &&
                 toys
                   .filter((toy) => toy.subCategory === subCategory)
@@ -78,11 +78,11 @@ const Category = () => {
                       key={filteredToy._id}
                       className="bg-white p-4 shadow rounded-lg"
                     >
-                      <div className="aspect-w-3 h-96 relative">
+                      <div className="aspect-w-3 sm: h-96 relative">
                         <img
                           data-aos="flip-right"
                           src={filteredToy.toyPhoto}
-                          alt={filteredToy.toyName}
+                          // alt={filteredToy.toyName}
                           className="h-full w-full object-cover rounded-lg"
                         />
                       </div>
@@ -103,18 +103,26 @@ const Category = () => {
                             : filteredToy.detailDescription}
                         </h2>
                         <div className="flex mx-10 justify-between">
-                          <p  data-aos="zoom-in-up" className="text-lg font-bold">
+                          <p
+                            data-aos="zoom-in-up"
+                            className="text-lg font-bold"
+                          >
                             Price: ${filteredToy.price}
                           </p>
-                          <p  data-aos="zoom-in-up" className="text-lg font-bold">
+                          <p
+                            data-aos="zoom-in-up"
+                            className="text-lg font-bold"
+                          >
                             Available Quantity: {filteredToy.availableQuantity}
                           </p>
                           <div className="flex items-center text-lg font-bold mb-2">
-                            <p  data-aos="zoom-in-up" className="">Rating: {filteredToy.toyRating}</p>
+                            <p data-aos="zoom-in-up" className="">
+                              Rating: {filteredToy.toyRating}
+                            </p>
                             <AiFillStar className="text-yellow-500 mr-1" />
                           </div>
                         </div>
-                        <Link 
+                        <Link
                           data-aos="fade-"
                           to={`/viewdetails/${filteredToy._id}`}
                           className="btn btn-block text-xl bg-gradient-to-r from-blue-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 text-white font-semibold rounded focus:outline-none focus:ring-2 focus:ring-pink-500"

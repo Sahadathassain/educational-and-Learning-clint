@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const AllToys = () => {
     const [toys, setToys] = useState([]);
+    const [searchText, setSearchText] = useState("");
 
     useEffect(() => {
         fetch('http://localhost:5000/allData')
@@ -14,11 +15,27 @@ const AllToys = () => {
                 console.error('Error fetching toy data:', error);
             });
     }, []);
+    const handleSearch = () => {
+        fetch(`http://localhost:5000/alltoyByText/${searchText}`)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setToys(data);
+          });
+      };
 
     return (
         <div className="container mx-auto">
             <h2 className="text-2xl font-bold mb-4 text-center">All Toys</h2>
-
+            <div className=" text-center gap-2 m-5">
+          <input
+            onChange={(e) => setSearchText(e.target.value)}
+            type="text"
+            className="p-3 border-solid rounded border-blue-600 "
+            placeholder='Search by toy name'
+          />{" "}
+          <button className='bg-green-500 p-3 hover:bg-green-600 text-white px-4 py-2 rounded' onClick={handleSearch}>Search</button>
+        </div>
             <table className="table-auto w-full">
                 <thead>
                     <tr>

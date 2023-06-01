@@ -14,11 +14,11 @@ const About = () => {
                 </div>
                 <div className="">
                     <div className="rating mb-5 flex justify-center">
-                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-sky-400" />
-                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-sky-400" />
-                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-sky-400" />
-                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-sky-400" />
-                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-sky-400" />
+                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-sky-500" />
+                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-sky-500" />
+                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-sky-500" />
+                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-sky-500" />
+                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-sky-500" />
                     </div>
 
                     <div className="text-center px-10 mx-10">

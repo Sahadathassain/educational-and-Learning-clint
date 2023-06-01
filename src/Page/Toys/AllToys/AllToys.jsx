@@ -34,7 +34,7 @@ const AllToys = () => {
             className="p-3 border-solid rounded border-blue-600 "
             placeholder='Search by toy name'
           />{" "}
-          <button className='bg-green-500 p-3 hover:bg-green-600 text-white px-4 py-2 rounded' onClick={handleSearch}>Search</button>
+          <button className='bg-green-400 p-3 hover:bg-green-600 text-white px-4 py-2 rounded' onClick={handleSearch}>Search</button>
         </div>
             <table className="table-auto w-full">
                 <thead>

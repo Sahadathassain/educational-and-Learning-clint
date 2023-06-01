@@ -111,7 +111,7 @@ const MyToys = () => {
             Ascending
           </button>
           <button
-            className={`py-1 px-4  ${
+            className={`py-1 px-4 rounded-md ${
               sortBy === 'price' && sortOrder === 'desc' ? 'bg-indigo-500 text-white' : ''
             } focus:outline-none`}
             onClick={() => handleSort('price')}

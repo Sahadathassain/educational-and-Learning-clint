@@ -14,7 +14,7 @@ const MyToys = () => {
   useEffect(() => {
     const email = 'example@example.com';
 
-    fetch(`http://localhost:5000/myToys/${email}`)
+    fetch(`https://educational-and-learning-server-sahadathassain.vercel.app/myToys/${email}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -32,7 +32,7 @@ const MyToys = () => {
     const { _id: toyId } = selectedToy;
     console.log(selectedToy);
 
-    return fetch(`http://localhost:5000/updateToy/${toyId}`, {
+    return fetch(`https://educational-and-learning-server-sahadathassain.vercel.app/updateToy/${toyId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ const MyToys = () => {
   };
 
   const handleDelete = (toyId) => {
-    fetch(`http://localhost:5000/myToys/${toyId}`, {
+    fetch(`https://educational-and-learning-server-sahadathassain.vercel.app/myToys/${toyId}`, {
       method: 'DELETE',
     })
       .then((response) => {

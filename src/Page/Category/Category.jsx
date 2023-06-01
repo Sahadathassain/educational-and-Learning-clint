@@ -16,7 +16,7 @@ const Category = () => {
   useEffect(() => {
     // Fetch toy data from the API endpoint
     setLoading(true);
-    fetch("http://localhost:5000/allData")
+    fetch("https://educational-and-learning-server-sahadathassain.vercel.app/allData")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

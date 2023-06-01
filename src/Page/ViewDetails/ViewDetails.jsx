@@ -8,7 +8,7 @@ const ViewDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/allData/${id}`);
+        const response = await fetch(`https://educational-and-learning-server-sahadathassain.vercel.app/allData/${id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch document details');
         }

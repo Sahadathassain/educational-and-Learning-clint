@@ -1,3 +1,5 @@
+
+
 const ImgGallery = () => {
    return (
      <div className="w-full px-4 py-6 sm:px-6 lg:px-8">
@@ -42,7 +44,9 @@ const ImgGallery = () => {
          </div>
          <div className="bg-base-100">
            <img
+      
              className="shadow-2xl w-full h-full rounded-xl"
+            
              src="https://i.ebayimg.com/images/g/G3QAAOSwe61ftbcK/s-l1600.jpg"
              alt=""
            />

@@ -6,7 +6,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signInWithPopup,
+  signInWithRedirect,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
 
   const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider);
+    return signInWithRedirect(auth, provider);
   };
 
   const updateUser = (name, photo) => {
@@ -39,7 +39,6 @@ const AuthProvider = ({ children }) => {
         displayName: name,
         photoURL: photo,
       }).then(() => {
-        // Keep local user state in sync with updated profile
         setUser({ ...auth.currentUser });
       });
     }

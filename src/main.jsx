@@ -8,7 +8,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import router from './Routes/routes.jsx';
-import AuthProvider from './Providers/AuthProvider';
+import AuthProvider from './Providers/AuthProvider.jsx';
 // import AuthProvider from './providers/AuthProvider';
 
 

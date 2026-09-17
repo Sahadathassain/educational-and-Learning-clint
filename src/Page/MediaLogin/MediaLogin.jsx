@@ -5,18 +5,32 @@ import { AuthContext } from "../../Providers/AuthProvider";
 
 const MediaLogin = () => {
   const { signInWithGoogle } = useContext(AuthContext);
+
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleGoogleSignIn = () => {
-    setIsLoading(true);
-    setErrorMessage("");
+  const handleGoogleSignIn = async () => {
+    try {
+      setIsLoading(true);
+      setErrorMessage("");
 
-    signInWithGoogle().catch((error) => {
-      console.error("Error signing in with Google:", error.message);
-      setErrorMessage(`Error (${error.code}): ${error.message}`);
+      const result = await signInWithGoogle();
+
+      console.log(
+        "Google login successful:",
+        result.user
+      );
+    } catch (error) {
+      console.error("Google login error:", error);
+
+      setErrorMessage(
+        `Error (${error.code || "unknown"}): ${
+          error.message || "Google login failed"
+        }`
+      );
+    } finally {
       setIsLoading(false);
-    });
+    }
   };
 
   return (
@@ -28,16 +42,29 @@ const MediaLogin = () => {
         className="group flex w-full items-center justify-center gap-3 rounded-xl border border-[#E2E8F0] bg-white px-5 py-3.5 text-sm font-semibold text-[#172033] shadow-sm transition-all duration-200 hover:border-[#CBD5E1] hover:bg-[#F8FAFC] hover:shadow-md focus:outline-none focus:ring-4 focus:ring-[#2563EB]/10 disabled:cursor-not-allowed disabled:opacity-70"
       >
         {isLoading ? (
-          <FiLoader size={18} className="animate-spin text-[#2563EB]" />
+          <FiLoader
+            size={18}
+            className="animate-spin text-[#2563EB]"
+          />
         ) : (
-          <FaGoogle size={18} className="text-[#4285F4] transition-transform duration-200 group-hover:scale-110" />
+          <FaGoogle
+            size={18}
+            className="text-[#4285F4] transition-transform duration-200 group-hover:scale-110"
+          />
         )}
 
-        <span>{isLoading ? "Redirecting to Google..." : "Continue with Google"}</span>
+        <span>
+          {isLoading
+            ? "Connecting to Google..."
+            : "Continue with Google"}
+        </span>
       </button>
 
       {errorMessage && (
-        <p className="mt-3 text-center text-xs font-medium text-red-600 break-words" role="alert">
+        <p
+          className="mt-3 break-words text-center text-xs font-medium text-red-600"
+          role="alert"
+        >
           {errorMessage}
         </p>
       )}

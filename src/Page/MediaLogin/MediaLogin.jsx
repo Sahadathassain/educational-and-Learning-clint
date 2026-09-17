@@ -17,21 +17,18 @@ const MediaLogin = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleGoogleSignIn = () => {
-    setErrorMessage("");
+    // Call signInWithGoogle immediately without prior synchronous state drops
     setIsLoading(true);
+    setErrorMessage("");
 
     signInWithGoogle()
       .then(() => {
         console.log("Signed in with Google successfully!");
-
         navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error("Error signing in with Google:", error.message);
-
-        setErrorMessage(
-          "Google sign-in failed. Please try again."
-        );
+        setErrorMessage("Google sign-in failed. Please try again.");
       })
       .finally(() => {
         setIsLoading(false);
@@ -65,7 +62,6 @@ const MediaLogin = () => {
         </span>
       </button>
 
-      {/* Google Error */}
       {errorMessage && (
         <p
           className="mt-3 text-center text-xs font-medium text-red-600"

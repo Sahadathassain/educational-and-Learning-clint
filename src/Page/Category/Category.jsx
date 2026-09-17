@@ -14,7 +14,7 @@ import {
   FiRefreshCw,
 } from "react-icons/fi";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://educational-and-learning-server.vercel.app";
 
 const Category = () => {
   const [toys, setToys] = useState([]);

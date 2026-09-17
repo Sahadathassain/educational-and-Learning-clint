@@ -17,7 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 import UpdateToy from "../UpdateToy/UpdateToy";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://educational-and-learning-server.vercel.app";
 
 const MyToys = () => {
   const { user, loading: authLoading } = useContext(AuthContext);

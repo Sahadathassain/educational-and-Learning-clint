@@ -16,7 +16,7 @@ import {
 
 import { AuthContext } from "../../../Providers/AuthProvider";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://educational-and-learning-server.vercel.app";
 
 const initialFormData = {
   toyName: "",

@@ -1,24 +1,32 @@
-import About from "../About/About";
 import Banner from "../Banner/Banner";
 import Category from "../Category/Category";
-import Feedback from "../Feedback/Feedback";
 import ImgGallery from "../ImgGallery/ImgGallery";
 import SpecialProducts from "../SpecialProducts/SpecialProducts";
-
-
-
+import About from "../About/About";
+import Feedback from "../Feedback/Feedback";
 
 const Home = () => {
-    return (
-        <div>
-            <Banner></Banner>
-            <ImgGallery></ImgGallery>
-            <Category></Category>
-            <SpecialProducts></SpecialProducts>
-           <About></About>
-           <Feedback></Feedback>
-        </div>
-    );
+  return (
+    <main>
+      {/* Hero */}
+      <Banner />
+
+      {/* Explore by subject */}
+      <Category />
+
+      {/* Learning collection */}
+      <ImgGallery />
+
+      {/* Special collection */}
+      <SpecialProducts />
+
+      {/* About the platform */}
+      <About />
+
+      {/* User feedback */}
+      <Feedback />
+    </main>
+  );
 };
 
 export default Home;

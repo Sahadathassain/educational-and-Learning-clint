@@ -1,35 +1,152 @@
 import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
-import PrivateRoute from "../Routes/PrivateRoutes";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        setIsMenuOpen(false);
+      })
       .catch((error) => console.log(error));
   };
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
+  const navLinkClass = ({ isActive }) =>
+    `relative flex items-center rounded-xl px-4 py-2.5 text-sm font-semibold
+    transition-all duration-200
+    ${
+      isActive
+        ? "bg-white text-[#1E3A8A] shadow-sm"
+        : "text-white/85 hover:bg-white/10 hover:text-white"
+    }`;
+
   return (
-    <header className="bg-sky-500 text-black sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
-      <div className="flex items-center justify-between px-4 py-3 sm:p-0">
-        <div className="inline-flex items-center">
-          <img className="rounded-3xl h-10 mr-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6_P5oCkEo80h-NCtlhFoMkGMJYxS_g9vcXw&usqp=CAU" alt="" />
-          <Link to="/" className="text-white text-2xl font-bold">
-            Educational and Learning
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#1E3A8A]/95 text-white backdrop-blur-xl">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-[76px] items-center justify-between">
+
+          {/* ================= LOGO ================= */}
+          <Link
+            to="/"
+            onClick={closeMenu}
+            className="group flex items-center gap-3"
+          >
+            <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl bg-white shadow-sm transition-transform duration-200 group-hover:scale-105">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6_P5oCkEo80h-NCtlhFoMkGMJYxS_g9vcXw&usqp=CAU"
+                alt="Educational and Learning"
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            <div className="hidden sm:block">
+              <h1 className="text-lg font-bold leading-tight tracking-tight text-white">
+                Educational & Learning
+              </h1>
+
+              <p className="mt-0.5 text-[11px] font-medium tracking-wide text-white/60">
+                Learn • Explore • Grow
+              </p>
+            </div>
           </Link>
-        </div>
-        <div className="sm:hidden">
+
+          {/* ================= DESKTOP NAV ================= */}
+          <nav className="hidden items-center gap-1 md:flex">
+
+            <NavLink to="/" end className={navLinkClass}>
+              Home
+            </NavLink>
+
+            <NavLink to="/blog" className={navLinkClass}>
+              Blog
+            </NavLink>
+
+            <NavLink to="/alltoys" className={navLinkClass}>
+              All Toys
+            </NavLink>
+
+            {/* Only show private links when logged in */}
+            {user && (
+              <>
+                <NavLink to="/addtoys" className={navLinkClass}>
+                  Add Toys
+                </NavLink>
+
+                <NavLink to="/mytoys" className={navLinkClass}>
+                  My Toys
+                </NavLink>
+              </>
+            )}
+
+            {/* ================= USER AREA ================= */}
+            <div className="ml-3 flex items-center gap-2 border-l border-white/15 pl-3">
+
+              {user ? (
+                <>
+                  {/* Profile */}
+                  <div
+                    className="group flex items-center gap-2 rounded-xl px-2 py-1.5 transition hover:bg-white/10"
+                    title={user.displayName || "User"}
+                  >
+                    {user.photoURL ? (
+                      <img
+                        src={user.photoURL}
+                        alt="Profile"
+                        className="h-9 w-9 rounded-full border-2 border-white/30 object-cover"
+                      />
+                    ) : (
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-sm font-bold text-[#1E3A8A]">
+                        {user.displayName
+                          ? user.displayName.charAt(0).toUpperCase()
+                          : "U"}
+                      </div>
+                    )}
+
+                    <div className="hidden max-w-[120px] lg:block">
+                      <p className="truncate text-xs font-semibold text-white">
+                        {user.displayName || "User"}
+                      </p>
+
+                      <p className="text-[10px] text-white/50">
+                        Account
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Logout */}
+                  <button
+                    onClick={handleLogOut}
+                    type="button"
+                    className="rounded-xl border border-white/15 px-4 py-2.5 text-sm font-semibold text-white/85 transition hover:border-[#F97316] hover:bg-[#F97316] hover:text-white"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <Link
+                  to="/login"
+                  className="rounded-xl bg-white px-5 py-2.5 text-sm font-bold text-[#1E3A8A] shadow-sm transition hover:bg-[#F8FAFC] hover:shadow-md"
+                >
+                  Login
+                </Link>
+              )}
+            </div>
+          </nav>
+
+          {/* ================= MOBILE BUTTON ================= */}
           <button
             type="button"
-            className="text-gray-500 hover:text-white focus:outline-none focus:text-white"
-            aria-label="toggle menu"
-            onClick={toggleMenu}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/10 transition hover:bg-white/15 md:hidden"
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? (
               <svg
@@ -38,11 +155,11 @@ const Header = () => {
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                strokeWidth={2}
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
@@ -53,95 +170,127 @@ const Header = () => {
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                strokeWidth={2}
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16m-7 6h7"
+                  d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
             )}
           </button>
         </div>
-      </div>
-      <nav
-        className={`${
-          isMenuOpen ? "block" : "hidden"
-        } sm:block sm:flex sm:items-center sm:w-auto`}
-      >
-        <div className="px-2 pt-2 pb-4 sm:flex sm:ml-13">
-          <NavLink
-            to="/"
-            exact={true.toString()}
-            className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-700 sm:mt-0 sm:ml-2"
-            activeClassName="bg-gray-700"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/blog"
-            exact={true.toString()}
-            className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-700 sm:mt-0 sm:ml-2"
-            activeClassName="bg-gray-700"
-          >
-            Blog
-          </NavLink>
-          <PrivateRoute>
+
+        {/* ================= MOBILE MENU ================= */}
+        <div
+          className={`overflow-hidden transition-all duration-300 md:hidden ${
+            isMenuOpen
+              ? "max-h-[700px] pb-5 opacity-100"
+              : "max-h-0 opacity-0"
+          }`}
+        >
+          <nav className="space-y-1 border-t border-white/10 pt-4">
+
             <NavLink
-              to="/addToys"
-              exact={true.toString()}
-              className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-700 sm:mt-0 sm:ml-2"
-              activeClassName="bg-gray-700"
+              to="/"
+              end
+              onClick={closeMenu}
+              className={navLinkClass}
             >
-              Add Toys
+              Home
             </NavLink>
-          </PrivateRoute>
-          <PrivateRoute>
+
             <NavLink
-              to="/mytoys"
-              exact={true.toString()}
-              className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-700 sm:mt-0 sm:ml-2"
-              activeClassName="bg-gray-700"
+              to="/blog"
+              onClick={closeMenu}
+              className={navLinkClass}
             >
-              My Toys
+              Blog
             </NavLink>
-          </PrivateRoute>
-          <NavLink
-            to="/alltoys"
-            exact={true.toString()}
-            className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-700 sm:mt-0 sm:ml-2"
-            activeClassName="bg-gray-700"
-          >
-            All Toys
-          </NavLink>
-          {user && user.photoURL ? (
-            <img
-              src={user.photoURL}
-              alt="Profile"
-              className="h-8 w-8 rounded-full ml-2"
-              title={user.displayName || ""}
-            />
-          ) : null}
-          {user ? (
-            <button
-              onClick={handleLogOut}
-              className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-700 sm:mt-0 sm:ml-2"
-            >
-              Logout
-            </button>
-          ) : (
+
             <NavLink
-              to="/login"
-              exact={true.toString()}
-              className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-700 sm:mt-0 sm:ml-2"
-              activeClassName="bg-gray-700"
+              to="/alltoys"
+              onClick={closeMenu}
+              className={navLinkClass}
             >
-              Login
+              All Toys
             </NavLink>
-          )}
+
+            {/* Private links */}
+            {user && (
+              <>
+                <NavLink
+                  to="/addtoys"
+                  onClick={closeMenu}
+                  className={navLinkClass}
+                >
+                  Add Toys
+                </NavLink>
+
+                <NavLink
+                  to="/mytoys"
+                  onClick={closeMenu}
+                  className={navLinkClass}
+                >
+                  My Toys
+                </NavLink>
+              </>
+            )}
+
+            {/* ================= MOBILE USER ================= */}
+            <div className="mt-4 border-t border-white/10 pt-4">
+
+              {user ? (
+                <div className="space-y-3">
+
+                  <div className="flex items-center gap-3 rounded-xl bg-white/10 p-3">
+                    {user.photoURL ? (
+                      <img
+                        src={user.photoURL}
+                        alt="Profile"
+                        className="h-11 w-11 rounded-full border-2 border-white/20 object-cover"
+                      />
+                    ) : (
+                      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white font-bold text-[#1E3A8A]">
+                        {user.displayName
+                          ? user.displayName.charAt(0).toUpperCase()
+                          : "U"}
+                      </div>
+                    )}
+
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-semibold text-white">
+                        {user.displayName || "User"}
+                      </p>
+
+                      <p className="text-xs text-white/50">
+                        Account
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={handleLogOut}
+                    type="button"
+                    className="w-full rounded-xl border border-white/15 px-4 py-3 text-left text-sm font-semibold text-white/80 transition hover:border-[#F97316] hover:bg-[#F97316] hover:text-white"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  onClick={closeMenu}
+                  className="block rounded-xl bg-white px-4 py-3 text-center text-sm font-bold text-[#1E3A8A] transition hover:bg-[#F8FAFC]"
+                >
+                  Login
+                </Link>
+              )}
+            </div>
+          </nav>
         </div>
-      </nav>
+      </div>
     </header>
   );
 };
